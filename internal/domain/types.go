@@ -235,6 +235,7 @@ type EvalCandidate struct {
 	Evidence          []EvidenceRef   `json:"evidence"`
 	PromotionState    string          `json:"promotion_state"`
 	ReviewActor       string          `json:"review_actor,omitempty"`
+	ReviewReason      string          `json:"review_reason,omitempty"`
 	CreatedAt         time.Time       `json:"created_at"`
 }
 
