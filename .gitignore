@@ -1,0 +1,5 @@
+/bin/
+/artifacts/
+*.jsonl
+*.parquet
+.DS_Store
