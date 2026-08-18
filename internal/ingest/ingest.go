@@ -136,12 +136,16 @@ func (s *Store) readUnlocked() ([]domain.Span, error) {
 }
 
 type Ingestor struct {
-	Store    *Store
+	Store    Sink
 	MaxBatch int
 	slots    chan struct{}
 }
 
-func New(store *Store, maxBatch, concurrency int) *Ingestor {
+type Sink interface {
+	Append(domain.Span) (bool, error)
+}
+
+func New(store Sink, maxBatch, concurrency int) *Ingestor {
 	if maxBatch <= 0 {
 		maxBatch = DefaultMaxBatch
 	}
