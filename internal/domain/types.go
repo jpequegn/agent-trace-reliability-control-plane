@@ -175,6 +175,7 @@ type Classifier struct {
 type Impact struct {
 	FirstSeen        time.Time          `json:"first_seen"`
 	LastSeen         time.Time          `json:"last_seen"`
+	Recurrences      int                `json:"recurrences"`
 	AffectedRuns     int                `json:"affected_runs"`
 	TotalRuns        int                `json:"total_runs"`
 	AffectedUsers    int                `json:"affected_users"`
