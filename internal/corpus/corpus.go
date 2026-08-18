@@ -110,7 +110,7 @@ func runSpans(index int, runID, class string, started time.Time) []domain.Span {
 }
 
 func releasePackets(base time.Time) []domain.ReleasePacket {
-	legitimate := domain.ReleasePacket{ID: "release-latency", Service: "agent-lab", Version: "harness-v2", Owner: "team-signal", DeployedAt: base.Add(8 * time.Hour), ExpiresAt: base.Add(12 * time.Hour), ExpectedSignals: []string{"latency"}, AllowedReadTools: []string{"trace.read"}, BaselineCohort: "harness-v1", RollbackRef: "rollback-harness-v2"}
+	legitimate := domain.ReleasePacket{ID: "release-latency", Service: "agent-lab", Version: "harness-v2", Owner: "team-signal", DeployedAt: base, ExpiresAt: base.Add(6 * time.Hour), ExpectedSignals: []string{"run_latency"}, AllowedReadTools: []string{"trace.read"}, BaselineCohort: "harness-v1", RollbackRef: "rollback-harness-v2"}
 	legitimate.EvidenceDigest, _ = domain.Digest(legitimate.ID)
 	ambiguous := domain.ReleasePacket{ID: "release-ambiguous", Service: "unknown", Version: "prompt-v2", Owner: "", DeployedAt: base.Add(14 * time.Hour), ExpiresAt: base.Add(16 * time.Hour), ExpectedSignals: []string{"tool_error"}, AllowedReadTools: []string{"trace.read"}, BaselineCohort: "prompt-v1", RollbackRef: "rollback-prompt-v2"}
 	ambiguous.EvidenceDigest, _ = domain.Digest(ambiguous.ID)
